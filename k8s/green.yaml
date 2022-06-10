@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green-workload
+  labels:
+    app: blue-green-testing
+    variant: green
+spec:
+  selector:
+    matchLabels:
+      app: blue-green-testing
+      variant: green
+  template:
+    metadata:
+      labels:
+        app: blue-green-testing
+        variant: green
+    spec:
+      containers:
+        - name: green-workload
+          image: green
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: green-workload
+  labels:
+    app: blue-green-testing
+    variant: green
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: blue-green-testing
+    variant: green

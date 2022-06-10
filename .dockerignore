@@ -4,4 +4,4 @@ skaffold.yaml
 .git*
 .idea
 *.iml
-deploy/
+k8s/*
