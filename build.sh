@@ -1,7 +1,7 @@
-#!/bin/bash
-name="beekman9527/webapp"
-docker build -t $name .
+#!/bin/sh
 
-hostPort=28080
-memlimit="4096m"
-echo "docker run --memory $memlimit -d -p $hostPort:8080 $name" 
+set -e -x
+
+docker build --build-arg COLOR=$COLOR --tag $image .
+
+$PUSH_IMAGE && docker push $image

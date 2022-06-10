@@ -19,6 +19,7 @@ spec:
       containers:
         - name: workload
           image: workload
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
 ---

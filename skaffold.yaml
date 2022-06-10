@@ -14,6 +14,8 @@ profiles:
     build:
       artifacts:
         - image: blue
+          custom:
+            buildCommand: ./build.sh
     deploy:
       kubectl:
         manifests:
@@ -24,6 +26,8 @@ profiles:
     build:
       artifacts:
         - image: green
+          custom:
+            buildCommand: ./build.sh
     deploy:
       kubectl:
         manifests:
