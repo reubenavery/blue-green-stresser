@@ -1,0 +1,7 @@
+README.md
+Dockerfile
+skaffold.yaml
+.git*
+.idea
+*.iml
+deploy/
