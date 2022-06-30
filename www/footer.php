@@ -20,4 +20,20 @@
     }
     echo "<a href='/index.html'>Home</a>";
     echo "</center></p>";
+
+
 ?>
+<style type="text/css">
+body {
+  color: white;
+  background-color: <?= $_ENV['COLOR'] ?>;
+}
+a {
+  color: #FF0;
+  text-decoration: none;
+}
+a:hover {
+  color: #0FF;
+  text-decoration: underline;
+}
+</style>
