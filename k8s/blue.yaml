@@ -4,23 +4,28 @@ metadata:
   name: blue-workload
   labels:
     app: blue-green-testing
-    variant: blue
+    instance: blue
 spec:
   selector:
     matchLabels:
       app: blue-green-testing
-      variant: blue
+      instance: blue
   template:
     metadata:
       labels:
         app: blue-green-testing
-        variant: blue
+        instance: blue
     spec:
       containers:
-        - name: blue-workload
+        - name: workload
           image: blue
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
 ---
 apiVersion: v1
 kind: Service
@@ -28,7 +33,7 @@ metadata:
   name: blue-workload
   labels:
     app: blue-green-testing
-    variant: blue
+    instance: blue
 spec:
   type: NodePort
   ports:
@@ -36,15 +41,17 @@ spec:
       targetPort: 8080
   selector:
     app: blue-green-testing
-    variant: blue
+    instance: blue
 ---
+# Requires metrics-server:
+# kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   name: blue-workload
   labels:
     app: blue-green-testing
-    variant: blue
+    instance: blue
 spec:
   metrics:
     - type: Resource
