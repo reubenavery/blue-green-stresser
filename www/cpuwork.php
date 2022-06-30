@@ -1,4 +1,5 @@
 <?php
+    header('x-color: ' . $_ENV['COLOR']);
 
     $num = intval($_GET["cpu"]);
 

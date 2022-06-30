@@ -1,4 +1,6 @@
 <?php
+    header('x-color: ' . $_ENV['COLOR']);
+
     $value = intval($_GET['value']);
     $memnum = intval($_GET['memory']);
 
@@ -61,4 +63,3 @@
     echo "</center> </p>";
     include 'footer.php';
     echo "</body></html>";
-?>

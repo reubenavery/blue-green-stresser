@@ -1,3 +1,6 @@
+<?php
+  header('x-color: ' . $_ENV['COLOR']);
+?>
 <html>
 <head><title>stressed</title></head>
 <body>

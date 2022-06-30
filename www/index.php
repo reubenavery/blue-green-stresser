@@ -1,3 +1,6 @@
+<?php
+  header('x-color: ' . $_ENV['COLOR']);
+?>
 <html>
 <title>welcome <?= $_ENV['COLOR'] ?></title>
 <body>
