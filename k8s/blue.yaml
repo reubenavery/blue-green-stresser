@@ -24,8 +24,8 @@ spec:
             - containerPort: 8080
           resources:
             requests:
-              cpu: "100m"
-              memory: "128Mi"
+              cpu: "10m"
+              memory: "10Mi"
 ---
 apiVersion: v1
 kind: Service
@@ -45,7 +45,7 @@ spec:
 ---
 # Requires metrics-server:
 # kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: blue-workload
@@ -53,19 +53,16 @@ metadata:
     app: blue-green-testing
     instance: blue
 spec:
-  metrics:
-    - type: Resource
-      resource:
-        name: memory
-        targetAverageUtilization: 70
-    - type: Resource
-      resource:
-        name: cpu
-        targetAverageUtilization: 90
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: blue-workload
   minReplicas: 1
-  maxReplicas: 10
-
+  maxReplicas: 20
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 90
