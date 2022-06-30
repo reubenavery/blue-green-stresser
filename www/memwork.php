@@ -1,9 +1,9 @@
 <?php
-    $num = intval($_GET['value']);
+    $value = intval($_GET['value']);
     $memnum = intval($_GET['memory']);
 
-    if ($num < 1) {
-        $num = intval($_POST['value']);
+    if ($value < 1) {
+        $value = intval($_POST['value']);
     }
     
     if ($memnum < 1) {
@@ -11,12 +11,16 @@
     }
 
     echo "<html>";
-    echo "<head> <title> Memory Test </title> </head>";
-    echo "<body> <p> <center>";
+    echo "<head><title>Memory Test</title></head>";
+    echo "<body>";
+
+    include 'header.php';
+
+    echo "<p> <center>";
     echo "<h2> Memory Test by constructing a big string </h2>";
 
-    if($num < 0) {
-        $num = 0;
+    if($value < 0) {
+        $value = 0;
     }
 
     if($memnum < 1) {
@@ -29,9 +33,9 @@
         $memnum = $maxnum;
     }
 
-    $rnum = $num;
-    if($num > 1) {
-        $rnum = rand($num, $num+3);
+    $rnum = $value;
+    if($value > 1) {
+        $rnum = rand($value, $value+3);
     }
     $rmemnum = $memnum *1024*1024;
 

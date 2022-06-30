@@ -18,15 +18,18 @@
         echo "forward for: ($forward_for)";
         echo "<br>";
     }
+    echo "<br>";
+
     echo "<a href='/index.html'>Home</a>";
     echo "</center></p>";
-
-
 ?>
 <style type="text/css">
 body {
   color: white;
   background-color: <?= $_ENV['COLOR'] ?>;
+<?php
+  echo 'border-color:'.$COLOR.';'.$EC2_AZ;
+?>
 }
 a {
   color: #FF0;

@@ -1,7 +1,11 @@
 <?php
     echo "<html>";
     echo "<head> <title> Latency Test </title> </head>";
-    echo "<body> <p> <center>";
+    echo "<body>";
+
+    include 'header.php';
+
+    echo "<p> <center>";
     echo "<h2>Latency Test by Sleeping</h2>";
 
     $num = rand(100*1000, 500*1000);

@@ -5,23 +5,25 @@ build:
   artifacts:
     - image: workload
       docker:
-        dockerfile: Dockerfile.blue
         buildArgs:
           COLOR: blue
-      context: www
       sync:
         manual:
-          - src: '**/*.php'
+          - src: 'www/**'
             dest: /var/www/html
   local:
     useDockerCLI: true
     useBuildkit: true
+
 
 profiles:
   - name: blue
     build:
       artifacts:
         - image: blue
+          docker:
+            buildArgs:
+              COLOR: blue
     deploy:
       kubectl:
         manifests:
@@ -30,6 +32,10 @@ profiles:
     build:
       artifacts:
         - image: green
+          docker:
+            dockerfile: Dockerfile
+            buildArgs:
+              COLOR: green
     deploy:
       kubectl:
         manifests:

@@ -1,4 +1,5 @@
 <?php
+
     $num = intval($_GET["cpu"]);
 
     if ($num < 1) {
@@ -15,8 +16,12 @@
     //}
 
     echo "<html>";
-    echo "<head> <title> CPU Test </title> </head>";
-    echo "<body> <p> <center>";
+    echo "<head><title>CPU Test</title></head>";
+    echo "<body>";
+
+    include 'header.php';
+
+    echo "<p> <center>";
     echo "<h2> CPU Test by calculating MD5 of numbers. </h2>";
 
     // $rnum = rand($low, $num) * 1000;

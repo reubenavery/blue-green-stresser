@@ -15,9 +15,11 @@
     }
 
     echo "<html>";
-    echo "<head> <title> Latency Test </title> </head>";
-    echo "<body> <p> <center>";
+    echo "<head><title>Latency Test</title></head>";
     echo "<h2>Latency Test by Sleeping</h2>";
+    echo "<body>";
+    include 'header.php';
+    echo "<p> <center>";
 
     $rnum = rand($low, $num+2);
     echo "sleep $rnum ms <br>";
