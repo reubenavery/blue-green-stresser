@@ -1,8 +1,22 @@
 apiVersion: skaffold/v2beta28
 kind: Config
+
 build:
   artifacts:
     - image: workload
+      docker:
+        dockerfile: Dockerfile.blue
+        buildArgs:
+          COLOR: blue
+      context: www
+      sync:
+        manual:
+          - src: '**/*.php'
+            dest: /var/www/html
+  local:
+    useDockerCLI: true
+    useBuildkit: true
+
 profiles:
   - name: blue
     build:
