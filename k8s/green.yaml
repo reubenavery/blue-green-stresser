@@ -38,3 +38,27 @@ spec:
   selector:
     app: blue-green-testing
     variant: green
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: green-workload
+  labels:
+    app: blue-green-testing
+    variant: green
+spec:
+  metrics:
+    - type: Resource
+      resource:
+        name: memory
+        targetAverageUtilization: 70
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 90
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: green-workload
+  minReplicas: 1
+  maxReplicas: 10

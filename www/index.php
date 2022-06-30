@@ -1,8 +1,8 @@
 <html>
 <title>welcome</title>
-<body>
-<div style="background: <?php echo '$_ENV["COLOR"]'; ?>;">
-    <h1>It works eeidiot <?php echo '$_ENV["COLOR"]'; ?>! </h1>
+<body style="background: <?= $_ENV["COLOR"]; ?>;">
+<div>
+    <h1>It works</h1>
     <ul>
         <li><a href="/workload.php/?value=110">Latency</a><span>set latency: sleep 110 ms.</span></li>
         <li><a href="/memwork.php/?value=110&memory=10">Memory workload</a><span>set workload: use 10 MB memory, and sleep 110 ms.</span></li>

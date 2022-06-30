@@ -3,31 +3,19 @@ kind: Config
 build:
   artifacts:
     - image: workload
-deploy:
-  kubectl:
-    manifests:
-      - k8s/blue.yaml
 profiles:
   - name: blue
-    activation:
-      - env: COLOR=blue
     build:
       artifacts:
         - image: blue
-          custom:
-            buildCommand: ./build.sh
     deploy:
       kubectl:
         manifests:
           - k8s/blue.yaml
   - name: green
-    activation:
-      - env: COLOR=green
     build:
       artifacts:
         - image: green
-          custom:
-            buildCommand: ./build.sh
     deploy:
       kubectl:
         manifests:
