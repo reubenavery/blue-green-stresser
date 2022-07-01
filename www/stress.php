@@ -1,7 +1,7 @@
 <?php
 
 header('x-color: ' . $_ENV['COLOR']);
-echo $_ENV['COLOR'];
+echo $_ENV['COLOR'] . "\n";
 
 ###################################################
 # Work CPU
