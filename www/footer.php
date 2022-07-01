@@ -5,7 +5,7 @@
 
     echo "<hr/>";
     echo "<p><center>";
-    echo "<br> version 0.1.0<br/>";
+    echo "<br> version 0.2.0<br/>";
     echo "Host: ". $_SERVER['HTTP_HOST'];
     echo "<br/>";
     echo "IP: ". $_SERVER['SERVER_ADDR'];
